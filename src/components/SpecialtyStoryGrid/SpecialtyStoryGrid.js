@@ -52,6 +52,12 @@ const Wrapper = styled.div`
   
   @media ${QUERIES.laptopAndUp} {
     grid-template-columns: 1fr minmax(0, 1fr);
+
+    & > *:nth-child(1) {
+      border-right: 1px solid var(--color-gray-300);
+      padding-right: 24px;
+      margin-right: -24px;
+    }
   }
 `;
 
