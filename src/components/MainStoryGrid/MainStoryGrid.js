@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, {css} from 'styled-components/macro';
 
 import {
   MAIN_STORY,
@@ -31,7 +31,7 @@ const MainStoryGrid = () => {
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <StoryList $isOpinion>
           {OPINION_STORIES.map((story, index) => (
             <OpinionStory key={story.id} {...story} />
           ))}
@@ -63,7 +63,7 @@ const Wrapper = styled.div`
       'opinion-stories opinion-stories';
   }
   
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     grid-template-columns: 2fr 2fr 1fr;
     grid-template-areas:
       'main-story secondary-stories opinion-stories'
@@ -79,18 +79,40 @@ const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
 `;
 
+const opinionListCss = css`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+    gap: 32px;
+
+    & > * {
+      flex: 1;
+    }
+
+    & > *:not(:last-child) {
+      border-bottom: unset;
+      padding-bottom: unset;
+    }
+
+    & > *:not(:first-child) {
+      padding-top: unset;
+    }
+  }
+`
+
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   & > *:not(:last-child) {
     border-bottom: 1px solid var(--color-gray-300);
     padding-bottom: 20px;
   }
-  
+
   & > *:not(:first-child) {
     padding-top: 20px;
   }
+  
+  ${p => p.$isOpinion && opinionListCss}
 `;
 
 const OpinionSection = styled.section`

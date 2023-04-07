@@ -54,7 +54,7 @@ const Link = styled.a`
 const DesktopCTA = styled.div`
   display: none;
   
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,7 @@ const SuperHeader = styled.div`
   background: var(--color-gray-900);
   color: white;
   
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     background: unset;
     position: absolute;
     width: 100%;
@@ -90,7 +90,7 @@ const ActionGroup = styled.div`
     display: block;
   }
   
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     color: var(--color-gray-900);
     display: ${p => p.$hideOnDesktop && 'none'}
   }
