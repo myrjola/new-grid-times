@@ -61,13 +61,31 @@ const Wrapper = styled.div`
       'main-story secondary-stories'
       'advertisement advertisement'
       'opinion-stories opinion-stories';
+    
+    & > *:nth-child(1) {
+      border-right: 1px solid var(--color-gray-300);
+      padding-right: 24px;
+      margin-right: -24px;
+    }
   }
   
   @media ${QUERIES.laptopAndUp} {
     grid-template-columns: 2fr 2fr 1fr;
     grid-template-areas:
       'main-story secondary-stories opinion-stories'
-      'main-story advertisement advertisement'
+      'main-story advertisement advertisement';
+
+    & > *:nth-child(2) {
+      border-right: 1px solid var(--color-gray-300);
+      padding-right: 24px;
+      margin-right: -24px;
+    }
+    
+    & > *:nth-child(4) {
+      border-top: 1px solid var(--color-gray-300);
+      padding-top: 24px;
+      margin-top: -24px;
+    }
   }
 `;
 
