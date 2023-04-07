@@ -21,11 +21,17 @@ const Header = () => {
               <Menu size={24} />
             </button>
           </ActionGroup>
-          <ActionGroup>
+          <ActionGroup $hideOnDesktop>
             <button>
               <User size={24} />
             </button>
           </ActionGroup>
+          <DesktopCTA>
+            <Button>
+              Subscribe
+            </Button>
+            <Link href="#">Already a member?</Link>
+          </DesktopCTA>
         </Row>
       </SuperHeader>
       <MainHeader>
@@ -35,10 +41,36 @@ const Header = () => {
   );
 };
 
+const Link = styled.a`
+  color: var(--color-gray-900);
+  font-family: 'Crimson Text', 'serif';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px; 
+  text-decoration: underline;
+`
+
+const DesktopCTA = styled.div`
+  display: none;
+  
+  @media ${QUERIES.desktopAndUp} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
 const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+  
+  @media ${QUERIES.desktopAndUp} {
+    background: unset;
+    position: absolute;
+    width: 100%;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -56,6 +88,11 @@ const ActionGroup = styled.div`
   */
   svg {
     display: block;
+  }
+  
+  @media ${QUERIES.desktopAndUp} {
+    color: var(--color-gray-900);
+    display: ${p => p.$hideOnDesktop && 'none'}
   }
 `;
 
